@@ -305,6 +305,83 @@
 }
 
 /* ==========================================================================
+   PASSWORD VISIBILITY TOGGLE
+   ========================================================================== */
+
+   .password-field {
+    position: relative;
+}
+
+/* Extra specificity so the mobile `.form-group input` padding can't override it */
+.form-group .password-field input {
+    padding-right: 44px;
+}
+
+/* Hide the browser's built-in reveal button (Edge) to avoid a double icon */
+.password-field input::-ms-reveal,
+.password-field input::-ms-clear {
+    display: none;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    transform: translateY(-50%);
+
+    width: 34px;
+    height: 34px;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: transparent;
+    border: none;
+    border-radius: 8px;
+
+    color: #667085;
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.password-toggle:hover {
+    background-color: #F2F4F7;
+    color: #172033;
+}
+
+.password-toggle:focus-visible {
+    outline: 2px solid #14B8A6;
+    outline-offset: 2px;
+}
+
+.password-toggle svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.password-toggle .icon-eye-off {
+    display: none;
+}
+
+.password-toggle.is-visible .icon-eye {
+    display: none;
+}
+
+.password-toggle.is-visible .icon-eye-off {
+    display: block;
+}
+
+/* ==========================================================================
    MOBILE
    ========================================================================== */
 

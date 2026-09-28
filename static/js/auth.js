@@ -137,3 +137,22 @@ registerForm.addEventListener("submit", async function (event) {
             "Something went wrong. Please try again.";
     }
 });
+
+// ================= PASSWORD VISIBILITY TOGGLE =================
+document.querySelectorAll(".password-toggle").forEach(function (button) {
+    const input = document.getElementById(button.dataset.target);
+
+    // Keep focus in the input when the eye is clicked with a mouse/touch
+    button.addEventListener("mousedown", function (event) {
+        event.preventDefault();
+    });
+
+    button.addEventListener("click", function () {
+        const show = input.type === "password";
+
+        input.type = show ? "text" : "password";
+        button.classList.toggle("is-visible", show);
+        button.setAttribute("aria-pressed", String(show));
+        button.setAttribute("aria-label", show ? "Hide password" : "Show password");
+    });
+});
