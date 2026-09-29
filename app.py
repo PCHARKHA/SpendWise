@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request,render_template
 from datetime import timedelta
+import os
 
 from routes.expenses_routes import expense_bp
 from routes.auth_routes import auth_bp
@@ -11,7 +12,7 @@ from flask_jwt_extended import JWTManager
 
 app = Flask(__name__)
 
-app.config["JWT_SECRET_KEY"] = "your-random-secret-key"
+app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY")
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours = 1)
 
 jwt = JWTManager(app)
