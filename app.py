@@ -21,6 +21,7 @@ app.register_blueprint(expense_bp)
 app.register_blueprint(auth_bp)
 app.register_blueprint(page_bp)
 
+init_db()
+
 if __name__ == "__main__":
-    init_db()
     app.run(debug=True)
