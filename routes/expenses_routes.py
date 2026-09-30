@@ -55,7 +55,11 @@ def add_expense():
         }), 400
 
     user_id = int(get_jwt_identity())
-    date = datetime.now().date().isoformat()
+    date = (
+    expense_data.date.isoformat()
+    if expense_data.date
+    else datetime.now().date().isoformat()
+    )
     
     expense = create_expense(
         user_id,

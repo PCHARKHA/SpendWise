@@ -1,10 +1,13 @@
 from pydantic import BaseModel,Field,field_validator
+from datetime import date as date_type
 from data.expenses import ALLOWED_CATEGORIES,ALLOWED_PAYMENT_METHODS
+
 class Expense(BaseModel):
     amount: float = Field(gt=0,le=100000)
     category: str = Field(min_length=2,max_length=30)
     payment_method: str = Field(min_length=2,max_length=30)
     note: str | None = Field(default=None,max_length=200)
+    date: date_type| None = None
 
     # @field_validator("amount")
     # @classmethod
